@@ -85,8 +85,7 @@ public class CliBankingApp{
                             }
                         }
                     }while(!valid);
-                    System.out.println("----");
-
+                   
                     int[] newIdArray = new int[userIds.length + 1];
                     String[] newNameArray = new String[newIdArray.length];
                     int index=1;
@@ -110,13 +109,16 @@ public class CliBankingApp{
                     boolean balance = true;
                     double initialDipo;
                     do{
-                        System.out.print("Enter Initial Deposite: ");
+                        System.out.print("\tEnter Initial Deposite: ");
                         initialDipo = SCANNER.nextDouble();
                         SCANNER.nextLine();
-                        if(initialDipo<5000){
+                        if(initialDipo<0){
+                            System.out.printf(ERROR_MSG,"Invalied amount!");
+                            balance = false;
+                        }else if(initialDipo<5000){
                             System.out.printf(ERROR_MSG,"Insufficient amount!");
                             balance = false;
-                        }else{
+                        }else {
                             balance = true;
                         }
 
