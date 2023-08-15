@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Scanner;
 public class CliBankingApp{
     private static final Scanner SCANNER = new Scanner(System.in);
@@ -22,6 +23,9 @@ public class CliBankingApp{
         final String SUCCESS_MSG = String.format("\t%s%s%s\n", COLOR_GREEN_BOLD, "%s", RESET);
 
         String screen = DASHBOARD;
+
+        int[] userIds = new int[0];
+        String[] userName = new String[0];
 
         
         do{
@@ -59,7 +63,47 @@ public class CliBankingApp{
 
                 case CREATE_NEW_ACCOUNT:
                     
-                    
+                    System.out.printf("\tNew Student ID: SDB-%04d \n", (userIds.length + 1));
+
+                    boolean valid;
+                    String name;
+                    //Name validation
+                    do{
+                        valid = true;
+                        System.out.print("\tEnter User Name: ");
+                        name = SCANNER.nextLine().strip();
+                        if (name.isBlank()){
+                            System.out.printf("\t%sName can't be empty%s\n", COLOR_RED_BOLD, RESET);
+                            valid = false;
+                            continue;
+                        }
+                        for (int i = 0; i < name.length(); i++) {
+                            if (!(Character.isLetter(name.charAt(i)) || Character.isSpaceChar(name.charAt(i))) ) {
+                                System.out.printf("\t%sInvalid Name%s\n", COLOR_RED_BOLD, RESET);
+                                valid = false;
+                                break;
+                            }
+                        }
+                    }while(!valid);
+
+                    int[] newIdArray = new int[userIds.length + 1];
+                    String[] newNameArray = new String[newIdArray.length];
+                    int index=1;
+                    for (int i = 0; i < userIds.length; i++) {
+                        newIdArray[i] = userIds[i];
+                        index++;
+                    }
+                    newIdArray[newIdArray.length -1] = index;
+                    userIds = newIdArray;
+
+                    for (int i = 0; i < userName.length; i++) {
+                        newNameArray[i] = userName[i];
+                    }
+                    newNameArray[newNameArray.length -1] = name;
+                    userName = newNameArray;
+
+                    System.out.println(Arrays.toString(userName));
+                    System.out.println(Arrays.toString(userIds));
 
             }       
                 
