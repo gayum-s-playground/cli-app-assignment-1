@@ -63,7 +63,7 @@ public class CliBankingApp{
 
                 case CREATE_NEW_ACCOUNT:
                     
-                    System.out.printf("\tNew Student ID: SDB-%04d \n", (userIds.length + 1));
+                    System.out.printf("\tNew Student ID: SDB-%05d \n", (userIds.length + 1));
 
                     boolean valid;
                     String name;
@@ -85,6 +85,7 @@ public class CliBankingApp{
                             }
                         }
                     }while(!valid);
+                    System.out.println("----");
 
                     int[] newIdArray = new int[userIds.length + 1];
                     String[] newNameArray = new String[newIdArray.length];
@@ -104,6 +105,20 @@ public class CliBankingApp{
 
                     System.out.println(Arrays.toString(userName));
                     System.out.println(Arrays.toString(userIds));
+                    
+
+                    // boolean balance = true;
+                    // do{
+
+
+                    // }while(!balance);
+
+                    System.out.println();
+                    System.out.printf(SUCCESS_MSG, String.format("SDB-%04d:%s has been saved successfully", index, name));
+                    System.out.print("\tDo you want to continue adding (Y/n)? ");
+                    if (SCANNER.nextLine().strip().toUpperCase().equals("Y")) continue;
+                    screen = DASHBOARD;
+                    break;
 
             }       
                 
