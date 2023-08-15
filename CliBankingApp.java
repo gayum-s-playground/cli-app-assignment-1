@@ -26,6 +26,7 @@ public class CliBankingApp{
 
         int[] userIds = new int[0];
         String[] userName = new String[0];
+        double[] userAccountBal = new double[0];
 
         
         do{
@@ -107,11 +108,19 @@ public class CliBankingApp{
                     System.out.println(Arrays.toString(userIds));
                     
 
-                    // boolean balance = true;
-                    // do{
+                    boolean balance = true;
+                    do{
+                        System.out.print("Enter Initial Deposite: ");
+                        double initialDipo = SCANNER.nextDouble();
+                        SCANNER.nextLine();
+                        if(initialDipo<5000){
+                            System.out.printf(ERROR_MSG,"Insufficient amount!");
+                            balance = false;
+                        }else{
+                            balance = true;
+                        }
 
-
-                    // }while(!balance);
+                    }while(!balance);
 
                     System.out.println();
                     System.out.printf(SUCCESS_MSG, String.format("SDB-%04d:%s has been saved successfully", index, name));
