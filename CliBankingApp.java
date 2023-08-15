@@ -1,4 +1,3 @@
-import java.util.Arrays;
 import java.util.Scanner;
 public class CliBankingApp{
     private static final Scanner SCANNER = new Scanner(System.in);
