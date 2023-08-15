@@ -122,6 +122,12 @@ public class CliBankingApp{
 
                     }while(!balance);
 
+                    double[] newAccountBal = new double[userAccountBal.length+1];
+                    for (int i = 0; i < userAccountBal.length; i++) {
+                        newAccountBal[i]=userAccountBal[i];
+                    }
+                    newAccountBal[newAccountBal.length-1]=initialDipo;
+
                     System.out.println();
                     System.out.printf(SUCCESS_MSG, String.format("SDB-%04d:%s has been saved successfully", index, name));
                     System.out.print("\tDo you want to continue adding (Y/n)? ");
